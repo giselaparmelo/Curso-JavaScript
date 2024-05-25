@@ -57,3 +57,47 @@ function mostrarProducto() {
     }
 
 }
+
+const carrito = [] // Inicializo carrito vacío.
+
+// Creo un array con mis productos:
+
+const productos = [
+    {nombre: "pizza", id: 1, precio: 5500},
+    {nombre: "hamburguesa", id: 2, precio: 4500},
+    {nombre: "pancho", id: 3, precio: 4500},
+    {nombre: "ensalada", id: 4, precio: 2100},
+    {nombre: "hotcakes", id: 5, precio: 2350},
+    {nombre: "tazón de fideos", id: 6, precio:4800},
+    {nombre: "tamal", id: 7, precio: 3900},
+    {nombre: "burrito", id: 8, precio: 2800},
+    {nombre: "arroz", id: 9, precio: 5100},
+    {nombre: "arroz con curry", id: 10, precio: 3950}
+]
+
+function buscarProducto(id) {
+    let productoSeleccionado = productos.find((producto) => producto.id === id)
+    return productoSeleccionado
+}
+
+function comprar () {
+    let id = prompt("Ingresa el cógido Id del producto deseado:")
+    let productoElegido = buscarProducto(parseInt(id))
+
+    if (productoElegido === undefined) {
+        alert("No se encontró el producto indicado.")
+    } else {
+        carrito.push(productoElegido)
+        alert("Se ha añadido " + productoElegido.nombre + " al carrito.")
+
+        let respuesta = confirm("Quiere elegir otro producto?")
+        if (respuesta === true) {
+            comprar() // Recursividad, para que pueda seguir realizando más compras.
+        } else {
+            const shop = new compra(carrito)
+        let subtotal = shop.calcularSubtotal()
+        console.log("El costo total es de $ ", subtotal)
+        }        
+    }
+}
+
