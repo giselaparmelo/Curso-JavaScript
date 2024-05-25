@@ -36,6 +36,31 @@ function mostrarPrecio(productoId) {
         case 4:
             alert("El  precio del producto 4 es $2350")
             break;
+
+        case 5:
+            alert("El  precio del producto 5 es $2550")
+            break;
+        
+        case 6:
+            alert("El  precio del producto 6 es $4800")
+            break;
+
+        case 7:
+            alert("El  precio del producto 7 es $3900")
+            break;
+        
+        case 8:
+            alert("El  precio del producto 7 es $2800")
+            break;
+        
+        case 9:
+            alert("El  precio del producto 7 es $5100")
+            break;
+
+        case 10:
+            alert("El  precio del producto 7 es $3950")
+            break;
+
         default:
             console.warn("Por favor, ingresa un producto válido.")
             break;
@@ -65,9 +90,9 @@ const carrito = [] // Inicializo carrito vacío.
 const productos = [
     {nombre: "pizza", id: 1, precio: 5500},
     {nombre: "hamburguesa", id: 2, precio: 4500},
-    {nombre: "pancho", id: 3, precio: 4500},
-    {nombre: "ensalada", id: 4, precio: 2100},
-    {nombre: "hotcakes", id: 5, precio: 2350},
+    {nombre: "pancho", id: 3, precio: 2100},
+    {nombre: "ensalada", id: 4, precio: 2350},
+    {nombre: "hotcakes", id: 5, precio: 2550},
     {nombre: "tazón de fideos", id: 6, precio:4800},
     {nombre: "tamal", id: 7, precio: 3900},
     {nombre: "burrito", id: 8, precio: 2800},
