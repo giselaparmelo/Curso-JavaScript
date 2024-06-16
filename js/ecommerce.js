@@ -1,5 +1,48 @@
 const cuotasDisponibles = 12
 
+const productos = [
+    {nombre: "pizza", id: 1, precio: 5500, imagen: "🍕"},
+    {nombre: "hamburguesa", id: 2, precio: 4500, imagen: "🍔"},
+    {nombre: "pancho", id: 3, precio: 2100, imagen: "🌭"},
+    {nombre: "ensalada", id: 4, precio: 2350, imagen: "🥗"},
+    {nombre: "hotcakes", id: 5, precio: 2550, imagen: "🥞"},
+    {nombre: "tazón de fideos", id: 6, precio:4800, imagen: "🍜"},
+    {nombre: "tamal", id: 7, precio: 3900, imagen: "🫔"},
+    {nombre: "burrito", id: 8, precio: 2800, imagen: "🌯"},
+    {nombre: "arroz", id: 9, precio: 5100, imagen: "🍚"},
+    {nombre: "arroz con curry", id: 10, precio: 3950, imagen: "🍛"}
+]
+
+const divContenedor = document.getElementById("divContenedor")
+
+const imgCarrito = document.getElementById("carrito")
+
+function retornarCardHtml(producto) {
+    return `<div class="div-card">
+                <div class="imagen">${producto.imagen}</div>
+                <div class="producto">${producto.nombre}</div>
+                <div class="importe">$ ${producto.precio}</div>
+                <button id="${producto.id}" class="add-to-cart">Agregar</button>
+            </div>`
+
+}
+
+function cargarProductos() {
+    if (productos.length > 0) {
+        divContenedor.innerHTML = ""
+        productos.forEach((producto) => divContenedor.innerHTML += retornarCardHtml(producto))
+    } else {
+        divContenedor.innerHTML = retornarCardError()
+
+    }
+}
+
+function retornarCardError () {
+    return `<div class="div-card-error">
+                <h3>Se ha producido un error. Intente nuevamente más tarde</h3>
+            </div>`
+}
+
 function mostrarCuotas() { // Uso un ciclo for para mostrarle al usuario cuantas cuotas ofrezco(12).
     for (let i = 1; i <= cuotasDisponibles; i++) {
         console.log("Aprovechá hasta", i, "cuota/s")
@@ -67,18 +110,7 @@ const carrito = [] // Inicializo carrito vacío.
 
 // Creo un array con mis productos:
 
-const productos = [
-    {nombre: "pizza", id: 1, precio: 5500},
-    {nombre: "hamburguesa", id: 2, precio: 4500},
-    {nombre: "pancho", id: 3, precio: 2100},
-    {nombre: "ensalada", id: 4, precio: 2350},
-    {nombre: "hotcakes", id: 5, precio: 2550},
-    {nombre: "tazón de fideos", id: 6, precio:4800},
-    {nombre: "tamal", id: 7, precio: 3900},
-    {nombre: "burrito", id: 8, precio: 2800},
-    {nombre: "arroz", id: 9, precio: 5100},
-    {nombre: "arroz con curry", id: 10, precio: 3950}
-]
+
 
 function buscarProducto(id) {
     let productoSeleccionado = productos.find((producto) => producto.id === id)
@@ -106,4 +138,14 @@ function comprar () {
     }
 }
 
+
+function irAlCheckout() {
+    location.href = "checkout.html"
+}
+
 iniciar();
+cargarProductos()
+
+//Eventos
+
+imgCarrito.addEventListener("click", irAlCheckout)
