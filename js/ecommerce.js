@@ -144,8 +144,13 @@ function irAlCheckout() {
 }
 
 iniciar();
-cargarProductos()
+cargarProductos();
 
 //Eventos
 
 imgCarrito.addEventListener("click", irAlCheckout)
+
+imgCarrito.addEventListener("mousemove", () => {
+    if (carrito.lenght > 0){
+        imgCarrito.title = "Productos en el carrito;" + carrito.length}
+})
