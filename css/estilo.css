@@ -65,7 +65,15 @@ main{
     
 }
 
+
 .div-card{
     border: 2px solid black;
 }
 
+.bordeTablaCarrito{
+    border: solid black 2px;
+}
+
+.centrarCheckOut{
+    margin: 0 auto;
+}

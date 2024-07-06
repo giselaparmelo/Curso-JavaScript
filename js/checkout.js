@@ -6,15 +6,15 @@ const carrito = JSON.parse(localStorage.getItem("carritoCompras")) || []
 function calcularTotalCarrito () {
     if(carrito.length > 0) {
         let montoTotalCarrito = carrito.reduce((acc, prod) => acc + prod.precio, 0)
-        importeTotalCarrito.textContent = `$ ${montoTotalCarrito.toLocaleString("es-AR")}s`
+        importeTotalCarrito.textContent = `$ ${montoTotalCarrito}`
     }
 }
 
-function armarTablaCarrito(imagen, nombre, precio) {
+function armarTablaCarrito(carrito) {
     return `<tr>
-                <td class="imagen-carrito">${imagen}</td>
-                <td>${nombre}</td>
-                <td>${precio.toLocaleString(es-AR)}</td>
+                <td class="imagen-carrito">${carrito.imagen}</td>
+                <td>${carrito.nombre}</td>
+                <td>${carrito.precio}</td>
                 <td class="quitar-carrito" title="click para quitar del carrito">❌</td>
             </tr>`
 }
@@ -26,5 +26,6 @@ function cargarProductosDelCarrito() {
         calcularTotalCarrito()
     }
 }
+
 
 cargarProductosDelCarrito()
