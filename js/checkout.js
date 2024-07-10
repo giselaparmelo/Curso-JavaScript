@@ -3,6 +3,8 @@ const importeTotalCarrito = document.querySelector("td#importeTotalCarrito")
 
 const carrito = JSON.parse(localStorage.getItem("carritoCompras")) || []
 
+
+
 function calcularTotalCarrito () {
     if(carrito.length > 0) {
         let montoTotalCarrito = carrito.reduce((acc, prod) => acc + prod.precio, 0)

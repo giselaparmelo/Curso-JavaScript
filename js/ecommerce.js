@@ -19,6 +19,17 @@ function mostrarMensajeToast(mensaje, color) {
       }).showToast();
 }
 
+function mostrarMensajeError() {
+    Swal.fire({
+        title: "Error",
+        text: "Seleccione al menos un producto",
+        icon: "error",
+        confirmButtonText: "Aceptar",
+    })
+}
+
+
+
 function retornarCardHtml(producto) {
     return `<div class="div-card">
                 <div class="imagen">${producto.imagen}</div>
@@ -83,6 +94,6 @@ obtenerProductos()
 //Eventos
 
 btnCarrito.addEventListener("click", () => {
-    carrito.length > 0 ? location.href = "checkout.html" : alert("Cargue al menos un producto en el carrito")
+    carrito.length > 0 ? location.href = "checkout.html" : mostrarMensajeError()
 })
 
