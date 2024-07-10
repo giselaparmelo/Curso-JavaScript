@@ -77,3 +77,9 @@ main{
 .centrarCheckOut{
     margin: 0 auto;
 }
+
+.divbotonComprar{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}

@@ -6,6 +6,16 @@ const spanCarrito = document.getElementById("productosEnCarrito")
 
 const carrito = JSON.parse(localStorage.getItem("carritoCompras")) || []
 
+function mostrarMensajeToast(mensaje, color) {
+    Toastify({
+        text: mensaje,
+        duration: 3000,
+        style: {
+          background: color,
+        },
+      }).showToast();
+}
+
 function retornarCardHtml(producto) {
     return `<div class="div-card">
                 <div class="imagen">${producto.imagen}</div>
@@ -49,6 +59,7 @@ function activarEventosClick() {
                 carrito.push(productoSeleccionado)
                 actualizarTotalCarrito()
                 localStorage.setItem("carritoCompras", JSON.stringify(carrito))
+                mostrarMensajeToast("Producto agregado al carrito", "green")
             })
         })
     }
