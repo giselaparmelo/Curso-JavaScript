@@ -3,6 +3,9 @@ const divContenedor = document.getElementById("divContenedor")
 const btnCarrito = document.getElementById("carrito")
 const spanCarrito = document.getElementById("productosEnCarrito")
 
+const productos = []
+const urlProductos = "js/productos.json"
+
 
 const carrito = JSON.parse(localStorage.getItem("carritoCompras")) || []
 
@@ -32,6 +35,17 @@ function retornarCardError () {
             </div>`
 }
 
+function obtenerProductos() {
+    fetch(urlProductos)
+    .then((response) => response.json())
+    .then((data) => productos.push(...data))
+    .then(() => cargarProductos(productos))
+    .catch((error) => {
+        console.error(error)
+        divContenedor.innerHTML = retornarCardError()
+    } )
+}
+
 function cargarProductos(array) {
     if (array.length > 0) {
         divContenedor.innerHTML = ""
@@ -39,9 +53,7 @@ function cargarProductos(array) {
         activarEventosClick()
         if(carrito.length > 0) {
             actualizarTotalCarrito()}
-    } else {
-        divContenedor.innerHTML = retornarCardError()
-    }
+    } 
 }
 
 function actualizarTotalCarrito() {
@@ -65,7 +77,8 @@ function activarEventosClick() {
     }
 }
 
-cargarProductos(productos)
+// cargarProductos(productos)
+obtenerProductos()
 
 //Eventos
 
